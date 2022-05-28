@@ -14,17 +14,9 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
           fetch-depth: 0
 
-      - name: Get version
-        id: tag
-        uses: olegtarasov/get-tag@v2.1.1
-        with:
-          tagRegex: 'v(?<version>.*)'
-
       - name: Parse semver string
         id: version 
-        uses: booxmedialtd/ws-action-parse-semver@v1
-        with:
-          input_string: ${{ steps.tag.outputs.version }}
+        uses: release-kit/semver@v1
     
       - name: Check branch existence
         id: branch-exists
