@@ -30,7 +30,7 @@ jobs:
       tag: ${{ github.event.release.tag_name }}
       version: ${{ steps.version.outputs }}
       branch: ${{ steps.version.outputs.prerelease != null && 'release/${{ steps.version.outputs.prerelease }}' || 'release/latest' }}
-      branch-exists: ${{ $(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l) == '1' }}
+      branch-exists: ${{ "$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)" == "1" }}
 
   sync-latest:
     runs-on: ubuntu-latest
