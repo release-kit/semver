@@ -1,29 +1,3 @@
-<p align="center">
-  <img src="logo.svg" width="200" align="center" alt="Release Kit" style="max-width: 100%;" />
-  <h1></h1>
-  <p align="center">
-    ✨ Semver parser action for your workflows ✨
-  </p>
-</p>
-<br/>
-<p align="center">
-  <a href="https://github.com/release-kit/semver/actions?query=branch%3Amain">
-    <img src="https://github.com/release-kit/semver/actions/workflows/test-and-build.yml/badge.svg?event=push&branch=main" alt="@release-kit/semver CI Status" />
-  </a>
-  <a href="https://opensource.org/licenses/MIT" rel="nofollow">
-    <img src="https://img.shields.io/github/license/release-kit/semver" alt="License">
-  </a>
-  <a href="https://www.npmjs.com/package/@release-kit/semver" rel="nofollow">
-    <img src="https://img.shields.io/github/stars/release-kit/semver" alt="stars">
-  </a>
-</p>
-
-## Before you start
-
-The README on `main` branch may contain some unreleased changes.
-
-Go to [`release/latest`](https://github.com/release-kit/semver/tree/release/latest) branch to see the actual README for the latest version from NPM.
-
 ## Navigation
 
 - [Usage](#usage)
