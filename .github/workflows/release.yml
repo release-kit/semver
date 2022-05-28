@@ -14,23 +14,19 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
           fetch-depth: 0
 
-      - name: Get version
-        id: tag
-        uses: olegtarasov/get-tag@v2.1.1
-        with:
-          tagRegex: 'v(?<version>.*)'
-
       - name: Parse semver string
         id: version 
-        uses: booxmedialtd/ws-action-parse-semver@v1
-        with:
-          input_string: ${{ steps.tag.outputs.version }}
+        uses: release-kit/semver@v0
+
+      - name: Check branch existence
+        id: branch-exists
+        run: "::set-output name=flag::$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)"
     
     outputs:
       tag: ${{ github.event.release.tag_name }}
       version: ${{ steps.version.outputs }}
       branch: ${{ steps.version.outputs.prerelease != null && 'release/${{ steps.version.outputs.prerelease }}' || 'release/latest' }}
-      branch-exists: ${{ "$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)" == "1" }}
+      branch-exists: ${{ steps.branch-exists.outputs.flag == '1' }}
 
   sync-latest:
     runs-on: ubuntu-latest
