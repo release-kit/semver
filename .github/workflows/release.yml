@@ -57,7 +57,7 @@ jobs:
         run: git reset --hard ${{ needs.get-meta.outputs.tag }}
 
       - name: Update major tag
-        run: git tag -f ${{ needs.get-meta.outputs.major }}
+        run: git tag -f v${{ needs.get-meta.outputs.major }}
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
