@@ -72,36 +72,3 @@ jobs:
           TOKEN: ${{ secrets.FULL_ACCESS_GITHUB_TOKEN }}
         if: ${{ env.TOKEN == '' }}
         run: git push --tags --force
-
-  release:
-    runs-on: ubuntu-latest
-    needs: get-meta
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-
-      - name: Build package
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
-          yarn test
-
-      - name: Set version in package.json
-        uses: reedyuk/npm-version@1.0.1
-        with:
-          version: ${{ needs.get-meta.outputs.version.fullversion }}
-
-      - name: Create NPM config
-        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish latest
-        if: ${{ needs.get-meta.outputs.version.prerelease == null }}
-        run: npm publish
-
-      - name: Publish RC
-        if: ${{ needs.get-meta.outputs.version.prerelease != null }}
-        run: npm publish --tag ${{ needs.get-meta.outputs.version.prerelease }}

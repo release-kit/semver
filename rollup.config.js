@@ -1,6 +1,7 @@
+import commonjs from '@rollup/plugin-commonjs'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import { defineConfig } from 'rollup'
 import bundleSize from 'rollup-plugin-bundle-size'
-import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 import { terser } from 'rollup-plugin-terser'
 
@@ -11,33 +12,25 @@ const bundle = (input, config) =>
   defineConfig({
     ...config,
     input,
-    external: (id) => !/^[./]/.test(id),
     plugins: [...(config.plugins || []), bundleSize()],
   })
 
 const config = defineConfig([
   bundle(src('index.ts'), {
-    plugins: [esbuild(), terser()],
+    plugins: [
+      commonjs({ transformMixedEsModules: true }),
+      esbuild(),
+      nodeResolve(),
+      terser(),
+    ],
     output: [
       {
         file: dist('index.js'),
         format: 'cjs',
       },
-      {
-        file: dist('index.mjs'),
-        format: 'es',
-      },
-    ],
-  }),
-  bundle(src('index.ts'), {
-    plugins: [dts()],
-    output: [
-      {
-        file: dist('index.d.ts'),
-        format: 'es',
-      },
     ],
   }),
 ])
 
+// eslint-disable-next-line import/no-default-export
 export default config

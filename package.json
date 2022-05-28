@@ -21,13 +21,23 @@
     "test": "jest",
     "test:watch": "yarn test --watchAll",
     "lint": "eslint --ext .ts,.tsx src",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "prepare": "husky install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "execa": "5",
+    "semver": "^7.3.7"
+  },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.0",
     "@types/jest": "^27.5.1",
+    "@types/semver": "^7.3.9",
     "esbuild": "^0.14.39",
     "eslint-kit": "^3.0.2",
+    "husky": "^8.0.1",
     "jest": "^28.1.0",
     "jest-serializer-path": "^0.1.15",
     "rollup": "^2.73.0",

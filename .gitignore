@@ -15,5 +15,4 @@ node_modules
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-dist
 package-lock.json
