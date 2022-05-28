@@ -46,13 +46,13 @@ jobs:
           git config --global user.email "<>"
 
       - name: Create branch
-        if: ${{ needs.get-meta.outputs.branch-exists == false }}
+        if: ${{ needs.get-meta.outputs.branch-exists == 'false' }}
         run: |
           git checkout -b ${{ needs.get-meta.outputs.branch }}
           git push -u origin ${{ needs.get-meta.outputs.branch }}
 
       - name: Checkout branch
-        if: ${{ needs.get-meta.outputs.branch-exists == true }}
+        if: ${{ needs.get-meta.outputs.branch-exists == 'true' }}
         run: git checkout ${{ needs.get-meta.outputs.branch }} 
 
       - name: Override branch using tag HEAD
