@@ -14,10 +14,18 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
           fetch-depth: 0
 
+      - name: Get version
+        id: tag
+        uses: olegtarasov/get-tag@v2.1.1
+        with:
+          tagRegex: 'v(?<version>.*)'
+
       - name: Parse semver string
         id: version 
-        uses: release-kit/semver@v0
-
+        uses: booxmedialtd/ws-action-parse-semver@v1
+        with:
+          input_string: ${{ steps.tag.outputs.version }}
+    
       - name: Check branch existence
         id: branch-exists
         run: "::set-output name=flag::$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)"
