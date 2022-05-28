@@ -1,0 +1,39 @@
+name: 'Semver Parser'
+description: 'Parses a semantic version from a given string or git tag'
+
+inputs:
+  input:
+    description: 'Raw input string containing or is a semantic version to be parsed'
+    required: false
+  fallback:
+    discription: 'A string to use as a tag when it is not found'
+    required: false
+    default: 'v0.1.0'
+  extract:
+    description: 'Regex to extract semantic version from a input string if it is not a semver'
+    required: false
+    default: '^v?(.*)$'
+
+outputs:
+  major:
+    description: 'MAJOR part of the semver'
+  minor:
+    description: 'MINOR part of the semver'
+  patch:
+    description: 'PATCH part of the semver'
+  prerelease:
+    description: 'PRERELEASE part of the semver'
+  build:
+    description: 'BUILD part of the semver'
+  full:
+    description: 'A full representation of the semver'
+  tag:
+    discription: 'A full git tag string when it is used'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'play'
+  color: 'gray-dark'

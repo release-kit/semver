@@ -35,10 +35,6 @@ Go to [`release/latest`](https://github.com/release-kit/semver/tree/release/late
   - [Regular flow](#regular-flow)
   - [Prerelease from](#prerelease-flow)
   - [Conventions](#conventions)
-- [Using template](#using-template)
-  - [Replace everything](#replace-everything)
-  - [Add secrets](#add-secrets)
-  - [Set up branch protection](#set-up-branch-protection)
 
 ## Installation
 
