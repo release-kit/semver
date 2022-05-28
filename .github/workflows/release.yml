@@ -33,6 +33,8 @@ jobs:
     needs: get-meta
     if: needs.get-meta.outputs.branch == 'release/latest'
     steps:
+      - run: echo ${{ needs.get-meta.outputs.branch-exists }}
+
       - name: Setup git
         run: |
           git config --global user.name "GitHub Actions Bot"
