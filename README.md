@@ -1,23 +1,23 @@
 <p align="center">
-  <img src="logo.svg" width="200" align="center" alt="Typescript Library Logo" style="max-width: 100%;" />
+  <img src="logo.svg" width="200" align="center" alt="Release Kit" style="max-width: 100%;" />
   <h1></h1>
   <p align="center">
-    ✨ Typescript library template ✨
+    ✨ Semver parser action for your workflows ✨
   </p>
 </p>
 <br/>
 <p align="center">
-  <a href="https://github.com/js-templates/typescript-library/actions?query=branch%3Amain">
-    <img src="https://github.com/js-templates/typescript-library/actions/workflows/test-and-build.yml/badge.svg?event=push&branch=main" alt="typescript-library CI Status" />
+  <a href="https://github.com/release-kit/semver/actions?query=branch%3Amain">
+    <img src="https://github.com/release-kit/semver/actions/workflows/test-and-build.yml/badge.svg?event=push&branch=main" alt="@release-kit/semver CI Status" />
   </a>
   <a href="https://opensource.org/licenses/MIT" rel="nofollow">
-    <img src="https://img.shields.io/github/license/js-templates/typescript-library" alt="License">
+    <img src="https://img.shields.io/github/license/release-kit/semver" alt="License">
   </a>
-  <a href="https://www.npmjs.com/package/typescript-library" rel="nofollow">
-    <img src="https://img.shields.io/npm/dw/typescript-library.svg" alt="npm">
+  <a href="https://www.npmjs.com/package/@release-kit/semver" rel="nofollow">
+    <img src="https://img.shields.io/npm/dw/@release-kit/semver.svg" alt="npm">
   </a>
-  <a href="https://www.npmjs.com/package/typescript-library" rel="nofollow">
-    <img src="https://img.shields.io/github/stars/js-templates/typescript-library" alt="stars">
+  <a href="https://www.npmjs.com/package/@release-kit/semver" rel="nofollow">
+    <img src="https://img.shields.io/github/stars/release-kit/semver" alt="stars">
   </a>
 </p>
 
@@ -25,7 +25,7 @@
 
 The README on `main` branch can contain some unreleased changes.
 
-Go to [`release/latest`](https://github.com/js-templates/typescript-library/tree/release/latest) branch to see the actual README for the latest version from NPM.
+Go to [`release/latest`](https://github.com/release-kit/semver/tree/release/latest) branch to see the actual README for the latest version from NPM.
 
 ## Navigation
 
@@ -45,13 +45,13 @@ Go to [`release/latest`](https://github.com/js-templates/typescript-library/tree
 NPM:
 
 ```sh
-npm install typescript-library
+npm install @release-kit/semver
 ```
 
 Yarn:
 
 ```sh
-yarn add typescript-library
+yarn add @release-kit/semver
 ```
 
 ## Contributing
@@ -112,35 +112,3 @@ Then, the `release` workflow handles everything:
 - Should have human-readable name, for example: "Add a TODO list feature"
 - Should describe changes
 - Should have correct labels
-
-## Using template
-
-### Replace everything
-
-1. Replace all `js-templates/typescript-library` entries with your repo
-2. Replace all `typescript-library` entries with your library name
-3. Replace all `Your Name` entries with your library name
-4. Update `logo.svg`
-5. Update description in `README.md`
-6. Update logo's `alt`
-
-### Add secrets
-
-- `NPM_TOKEN`
-- `FULL_ACCESS_GITHUB_TOKEN` if you plan to set up [the branch protection](#add-branch-protection)
-
-### Set up branch protection
-
-1. Go to `Settings` > `Branches` > `Add rule`
-2. Specify a pattern: `{main,release/*}`
-3. Enable the following options:
-   - Require a pull request before merging (without approvals)
-   - Require status checks to pass before merging (you need to run them at least once to appear):
-     - `test-and-build`
-     - `pr-labeler`
-   - Include administrators
-   - Allow force pushes
-4. [Create a new Personal Access Token](https://github.com/settings/tokens/new) with `repo` permissions
-5. Use it as a new Secret named `FULL_ACCESS_GITHUB_TOKEN`  
-   It's needed to bypass the branch protection on CI runs
-
