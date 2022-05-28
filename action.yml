@@ -6,7 +6,7 @@ inputs:
     description: 'Raw input string containing or is a semantic version to be parsed'
     required: false
   fallback:
-    discription: 'A string to use as a tag when it is not found'
+    description: 'A string to use as a tag when it is not found'
     required: false
     default: 'v0.1.0'
   extract:
