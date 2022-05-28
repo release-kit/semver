@@ -32,7 +32,6 @@ jobs:
     
     outputs:
       tag: ${{ github.event.release.tag_name }}
-      version: ${{ steps.version.outputs }}
       branch: ${{ steps.version.outputs.prerelease != null && 'release/${{ steps.version.outputs.prerelease }}' || 'release/latest' }}
       branch-exists: ${{ steps.branch-exists.outputs.flag == '1' }}
 
