@@ -1,8 +1,8 @@
 {
-  "name": "typescript-library",
+  "name": "@release-kit/semver",
   "version": "0.0.0-set-by-ci",
   "description": "A TypeScript library starter template",
-  "author": "Your Name",
+  "author": "Evgeny Zakharov",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,7 +10,7 @@
   "files": [
     "dist/*"
   ],
-  "repository": "git@github.com:js-templates/typescript-library.git",
+  "repository": "git@github.com:release-kit/semver.git",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
