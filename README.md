@@ -14,9 +14,6 @@
     <img src="https://img.shields.io/github/license/release-kit/semver" alt="License">
   </a>
   <a href="https://www.npmjs.com/package/@release-kit/semver" rel="nofollow">
-    <img src="https://img.shields.io/npm/dw/@release-kit/semver.svg" alt="npm">
-  </a>
-  <a href="https://www.npmjs.com/package/@release-kit/semver" rel="nofollow">
     <img src="https://img.shields.io/github/stars/release-kit/semver" alt="stars">
   </a>
 </p>
@@ -29,26 +26,76 @@ Go to [`release/latest`](https://github.com/release-kit/semver/tree/release/late
 
 ## Navigation
 
-- [Installation](#installation)
+- [Usage](#usage)
 - [Contrubuting](#contributing)
 - [Maintenance](#maintenance)
   - [Regular flow](#regular-flow)
   - [Prerelease from](#prerelease-flow)
   - [Conventions](#conventions)
 
-## Installation
+## Usage
 
-NPM:
+Extract and parse version:
 
-```sh
-npm install @release-kit/semver
+```yml
+steps:
+  # from tag (may be v-prefixed)
+  - name: Parse version from tag
+    id: version
+    uses: release-kit/semver@v1
+  
+  # from v-prefixed string
+  - name: Parse version from string
+    id: version
+    uses: release-kit/semver@v1
+    with:
+      input: 'v4.5.0'
+
+  # from custom string
+  - name: Parse version from custmo string
+    id: version
+    uses: release-kit/semver@v1
+    with:
+      input: 'my-version:4.5.0'
+      extract: '^my-version:(.*)$' # ^v?(.*)$ by default
+
+  # from tag with custom fallback
+  - name: Parse version from tag with custom fallback
+    id: version
+    uses: release-kit/semver@v1
+    with:
+      fallback: 'v1.0.0' # v0.1.0 by default
 ```
 
-Yarn:
+Use parsed result:
 
-```sh
-yarn add @release-kit/semver
+```yml
+- name: Use parsed version
+  run: |
+    echo "${{ steps.version.outputs.major }}"
+    echo "${{ steps.version.outputs.minor }}"
+    echo "${{ steps.version.outputs.patch }}"
+    echo "${{ steps.version.outputs.prerelease }}"
+    echo "${{ steps.version.outputs.build }}"
+    echo "${{ steps.version.outputs.full }}"
+    echo "${{ steps.version.outputs.tag }}"
 ```
+
+## Options
+
+- `input` (optional, defaults to git tag) - custom string to use instead of git tag
+- `fallback` (optional, defaults to `v0.1.0`) - fallback string when tag is not found
+- `extract` (optional, defaults to `^v?(.*)$`) - regex to extract version from string
+
+## Outputs
+
+- `major` - `3` in `v3.4.5-alpha+1.2`
+- `minor` - `4` in `v3.4.5-alpha+1.2`
+- `patch` - `5` in `v3.4.5-alpha+1.2`
+- `prerelease` - `alpha` in `v3.4.5-alpha+1.2`
+- `build` - `1.2` in `v3.4.5-alpha+1.2`
+- `full` - `3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
+- `tag` - `v3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
 
 ## Contributing
 
