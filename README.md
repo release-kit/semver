@@ -20,13 +20,15 @@
 
 ## Before you start
 
-The README on `main` branch can contain some unreleased changes.
+The README on `main` branch may contain some unreleased changes.
 
 Go to [`release/latest`](https://github.com/release-kit/semver/tree/release/latest) branch to see the actual README for the latest version from NPM.
 
 ## Navigation
 
 - [Usage](#usage)
+- [Options](#options)
+- [Outputs](#outputs)
 - [Contrubuting](#contributing)
 - [Maintenance](#maintenance)
   - [Regular flow](#regular-flow)
@@ -92,8 +94,8 @@ Use parsed result:
 - `major` - `3` in `v3.4.5-alpha+1.2`
 - `minor` - `4` in `v3.4.5-alpha+1.2`
 - `patch` - `5` in `v3.4.5-alpha+1.2`
-- `prerelease` - `alpha` in `v3.4.5-alpha+1.2`
-- `build` - `1.2` in `v3.4.5-alpha+1.2`
+- `prerelease` - `alpha` in `v3.4.5-alpha+1.2` (empty string if no present)
+- `build` - `1.2` in `v3.4.5-alpha+1.2` (empty string if no present)
 - `full` - `3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
 - `tag` - `v3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
 
