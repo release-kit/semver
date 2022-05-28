@@ -24,6 +24,7 @@ jobs:
     
     outputs:
       tag: ${{ github.event.release.tag_name }}
+      major: ${{ steps.version.outputs.major }}
       branch: ${{ steps.version.outputs.prerelease != null && 'release/${{ steps.version.outputs.prerelease }}' || 'release/latest' }}
       branch-exists: ${{ steps.branch-exists.outputs.flag == '1' }}
 
@@ -52,6 +53,9 @@ jobs:
 
       - name: Override branch using tag HEAD
         run: git reset --hard ${{ needs.get-meta.outputs.tag }}
+
+      - name: Update major tag
+        run: git tag -f ${{ needs.get-meta.outputs.major }}
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
