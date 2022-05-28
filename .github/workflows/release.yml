@@ -28,7 +28,7 @@ jobs:
     
       - name: Check branch existence
         id: branch-exists
-        run: "::set-output name=flag::$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)"
+        run: echo "::set-output name=flag::$(git ls-remote --heads ${{ github.server_url }}/${{ github.repository }} ${{ needs.get-meta.outputs.branch }} | wc -l)"
     
     outputs:
       tag: ${{ github.event.release.tag_name }}
