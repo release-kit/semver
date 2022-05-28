@@ -1,4 +1,4 @@
-name: 'Semver'
+name: 'Semver Parse'
 description: 'Parses a semantic version from a given string or git tag'
 
 inputs:
