@@ -1,7 +1,7 @@
 {
   "name": "@release-kit/semver",
   "version": "0.0.0-set-by-ci",
-  "description": "A TypeScript library starter template",
+  "description": "Parses a semantic version from a given string or git tag",
   "author": "Evgeny Zakharov",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
