@@ -28,7 +28,7 @@ steps:
       input: 'v4.5.0'
 
   # from custom string
-  - name: Parse version from custmo string
+  - name: Parse version from custom string
     id: version
     uses: release-kit/semver@v1
     with:
