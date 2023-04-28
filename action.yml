@@ -31,7 +31,7 @@ outputs:
     description: 'A full git tag string when it is used'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 
 branding:
