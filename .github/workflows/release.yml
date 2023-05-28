@@ -23,7 +23,7 @@ jobs:
 
       - name: Parse version from tag
         id: version
-        uses: release-kit/semver@v2
+        uses: release-kit/semver@v2.0.4
 
       - name: Force update remote latest release branch
         run: git push origin ${{ github.event.release.tag_name }}:refs/heads/release/latest -f
