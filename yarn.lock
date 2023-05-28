@@ -4602,6 +4602,11 @@ rollup-plugin-esbuild@^4.9.1:
     joycon "^3.0.1"
     jsonc-parser "^3.0.0"
 
+rollup-plugin-node-externals@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-node-externals/-/rollup-plugin-node-externals-6.0.1.tgz#bb9f912c345bec62710a13528fbc5a725d509513"
+  integrity sha512-PIZKc0j44MAzEz9XqWfZ8vbjavWbs9fehh3LHsSB1WF5bdTjz5B8qVuaWiAzdd0tKOjjR/lh8f9Qv6bpLUTllg==
+
 rollup-plugin-terser@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz#e8fbba4869981b2dc35ae7e8a502d5c6c04d324d"

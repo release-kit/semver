@@ -55,4 +55,9 @@ async function run() {
   return extractAndSetOutput(latestTag.value, options.pattern)
 }
 
-void run()
+try {
+  void run()
+} catch (error) {
+  if (error instanceof Error) setFailed(error)
+  else setFailed('Unknown error')
+}
