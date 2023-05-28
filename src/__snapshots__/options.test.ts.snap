@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getOptions empty inputs 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "workflow-tag",
+}
+`;
+
+exports[`getOptions good fallback 1`] = `
+Object {
+  "fallback": "v1.0.0",
+  "pattern": "^v?(.*)$",
+  "source": "workflow-tag",
+}
+`;
+
+exports[`getOptions good pattern 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^.*$",
+  "source": "workflow-tag",
+}
+`;
+
+exports[`getOptions invalid fallback 1`] = `
+"[
+  {
+    \\"code\\": \\"too_small\\",
+    \\"minimum\\": 1,
+    \\"type\\": \\"string\\",
+    \\"inclusive\\": true,
+    \\"exact\\": false,
+    \\"message\\": \\"String must contain at least 1 character(s)\\",
+    \\"path\\": [
+      \\"fallback\\"
+    ]
+  }
+]"
+`;
+
+exports[`getOptions invalid pattern 1`] = `
+"[
+  {
+    \\"code\\": \\"custom\\",
+    \\"message\\": \\"Invalid input\\",
+    \\"path\\": [
+      \\"pattern\\"
+    ]
+  }
+]"
+`;
+
+exports[`getOptions latest tag source 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "latest-tag",
+}
+`;
+
+exports[`getOptions only string input 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "string",
+  "string": "v1.0.0",
+}
+`;
+
+exports[`getOptions string input with correct source 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "string",
+  "string": "v1.0.0",
+}
+`;
+
+exports[`getOptions workflow tag source 1`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "workflow-tag",
+}
+`;
+
+exports[`getOptions workflow tag source 2`] = `
+Object {
+  "fallback": "v0.1.0",
+  "pattern": "^v?(.*)$",
+  "source": "workflow-tag",
+}
+`;

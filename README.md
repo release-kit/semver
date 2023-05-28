@@ -1,6 +1,7 @@
 ## Navigation
 
-- [Usage](#usage)
+- [Parsing](#parsing)
+- [Using a result](#using-a-result)
 - [Options](#options)
 - [Outputs](#outputs)
 - [Contrubuting](#contributing)
@@ -9,41 +10,43 @@
   - [Prerelease from](#prerelease-flow)
   - [Conventions](#conventions)
 
-## Usage
-
-Extract and parse version:
+## Parsing
 
 ```yml
 steps:
-  # from tag (may be v-prefixed)
+  # 1. from workflow tag (can be v-prefixed)
+  # good for release workflows and pushing tags
   - name: Parse version from tag
     id: version
-    uses: release-kit/semver@v1
+    uses: release-kit/semver@v2
   
-  # from v-prefixed string
+  # 2. from manually defined v-prefixed string
   - name: Parse version from string
     id: version
-    uses: release-kit/semver@v1
+    uses: release-kit/semver@v2
     with:
-      input: 'v4.5.0'
+      string: 'v4.5.0'
 
-  # from custom string
-  - name: Parse version from custom string
+  # 3. from a string with the custom pattern
+  - name: Parse version from a string with a custom pattern
     id: version
-    uses: release-kit/semver@v1
+    uses: release-kit/semver@v2
     with:
-      input: 'my-version:4.5.0'
-      extract: '^my-version:(.*)$' # ^v?(.*)$ by default
+      string: 'my-version:4.5.0'
+      pattern: '^my-version:(.*)$' # ^v?(.*)$ by default
 
-  # from tag with custom fallback
+  # 4. from a tag with the custom fallback
+  # the fallback is used when there is no tag found
+  # works only for "latest-tag" source
   - name: Parse version from tag with custom fallback
     id: version
-    uses: release-kit/semver@v1
+    uses: release-kit/semver@v2
     with:
+      source: latest-tag
       fallback: 'v1.0.0' # v0.1.0 by default
 ```
 
-Use parsed result:
+## Using a result
 
 ```yml
 - name: Use parsed version
@@ -54,24 +57,28 @@ Use parsed result:
     echo "${{ steps.version.outputs.prerelease }}"
     echo "${{ steps.version.outputs.build }}"
     echo "${{ steps.version.outputs.full }}"
-    echo "${{ steps.version.outputs.tag }}"
 ```
+
+Check out the [Outputs](#outputs) section for the full description.
 
 ## Options
 
-- `input` (optional, defaults to git tag) - custom string to use instead of git tag
-- `fallback` (optional, defaults to `v0.1.0`) - fallback string when tag is not found
-- `extract` (optional, defaults to `^v?(.*)$`) - regex to extract version from string
+- `source` (optional, defaults to `workflow-tag`)
+  - `workflow-tag` - use tag from the workflow event (good from releases and tag pushes)
+  - `latest-tag` - use the latest tag from current repository (the commit doesn't matter)
+  - `string` - use the value from `string` input (can be omitted, automatically selected when `string` is defined)
+- `string` (optional, defaults to empty) - a string to be parsed, required only when `source` is `string`
+- `fallback` (optional, defaults to `v0.1.0`) - fallback string when a tag is not found
+- `pattern` (optional, defaults to `^v?(.*)$`) - regex to extract a version from a string
 
 ## Outputs
 
+- `full` - `3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
 - `major` - `3` in `v3.4.5-alpha+1.2`
 - `minor` - `4` in `v3.4.5-alpha+1.2`
 - `patch` - `5` in `v3.4.5-alpha+1.2`
 - `prerelease` - `alpha` in `v3.4.5-alpha+1.2` (empty string if no present)
 - `build` - `1.2` in `v3.4.5-alpha+1.2` (empty string if no present)
-- `full` - `3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
-- `tag` - `v3.4.5-alpha+1.2` in `v3.4.5-alpha+1.2`
 
 ## Contributing
 
