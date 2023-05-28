@@ -2,19 +2,22 @@ name: 'Semver Parse'
 description: 'Parses a semantic version from a given string or git tag'
 
 inputs:
-  input:
-    description: 'Raw input string containing or is a semantic version to be parsed'
+  source:
+    description: 'A source to take string from'
+    required: false
+  string:
+    description: 'A string to extract semver from'
     required: false
   fallback:
     description: 'A string to use as a tag when it is not found'
     required: false
-    default: 'v0.1.0'
-  extract:
-    description: 'Regex to extract semantic version from a input string if it is not a semver'
+  pattern:
+    description: 'Regex to extract semantic version from a input string'
     required: false
-    default: '^v?(.*)$'
 
 outputs:
+  full:
+    description: 'A full representation of the semver'
   major:
     description: 'MAJOR part of the semver'
   minor:
@@ -25,10 +28,6 @@ outputs:
     description: 'PRERELEASE part of the semver'
   build:
     description: 'BUILD part of the semver'
-  full:
-    description: 'A full representation of the semver'
-  tag:
-    description: 'A full git tag string when it is used'
 
 runs:
   using: 'node16'
