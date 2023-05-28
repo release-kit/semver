@@ -3,6 +3,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import { defineConfig } from 'rollup'
 import bundleSize from 'rollup-plugin-bundle-size'
 import esbuild from 'rollup-plugin-esbuild'
+import nodeExternals from 'rollup-plugin-node-externals'
 import { terser } from 'rollup-plugin-terser'
 
 const src = (file) => `src/${file}`
@@ -20,7 +21,8 @@ const config = defineConfig([
     plugins: [
       commonjs({ transformMixedEsModules: true }),
       esbuild(),
-      nodeResolve(),
+      nodeResolve({ exportConditions: ['node'] }),
+      nodeExternals(),
       terser(),
     ],
     output: [
