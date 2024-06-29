@@ -12,12 +12,15 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 20
           registry-url: https://registry.npmjs.org/
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.4.0
 
       - name: Test and build
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          yarn install --frozen-lockfile
-          yarn build
-          yarn test
+          pnpm install --frozen-lockfile
+          pnpm build
+          pnpm test

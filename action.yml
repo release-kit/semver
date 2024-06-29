@@ -30,7 +30,7 @@ outputs:
     description: 'BUILD part of the semver'
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 
 branding:

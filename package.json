@@ -17,9 +17,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "yarn build --watch",
+    "dev": "pnpm build --watch",
     "test": "jest",
-    "test:watch": "yarn test --watchAll",
+    "test:watch": "pnpm test --watchAll",
     "lint": "eslint \"{src}/**/*.{js,ts}\"",
     "lint:fix": "eslint \"{src}/**/*.{js,ts}\" --fix",
     "prepare": "husky install"
