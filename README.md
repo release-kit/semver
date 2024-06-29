@@ -65,7 +65,7 @@ Check out the [Outputs](#outputs) section for the full description.
 
 - `source` (optional, defaults to `workflow-tag`)
   - `workflow-tag` - use tag from the workflow event (good from releases and tag pushes)
-  - `latest-tag` - use the latest tag from current repository (the commit doesn't matter)
+  - `latest-tag` - use the latest tag from current repository (requires executing `checkout` action first)
   - `string` - use the value from `string` input (can be omitted, automatically selected when `string` is defined)
 - `string` (optional, defaults to empty) - a string to be parsed, required only when `source` is `string`
 - `fallback` (optional, defaults to `v0.1.0`) - fallback string when a tag is not found
